@@ -5,19 +5,19 @@ using System.Threading.Tasks;
 
 namespace CatsAndDogs
 {
-    enum Colors { Black, White, Yellow };
-    enum Genders { Male, Female };
+    public enum Colors { Black, White, Yellow, Unknown };
+    public enum Genders { Male, Female, Unknown };
 
     public class Animals
     {
         private string name;
         private string owner;
-        private string color;
-        private string gender;
+        private Colors color;
+        private Genders gender;
 
         public string Name { get { return this.name; } }
         public string Owner { get { return this.owner; }}
-        public string Color
+        public Colors Color
         {
             get
             {
@@ -25,19 +25,19 @@ namespace CatsAndDogs
             }
             set
             {
-                if (String.Compare(value, Colors.Black.ToString(), ignoreCase: true) == 0 ||
-                    String.Compare(value, Colors.White.ToString(), ignoreCase: true) == 0 ||
-                    String.Compare(value, Colors.Yellow.ToString(), ignoreCase: true) == 0)
+                if (value == Colors.Black ||
+                    value == Colors.White ||
+                    value == Colors.Yellow)
                 {
                     this.color = value;
                 }
                 else
                 {
-                    this.color = "Unknown";
+                    this.color = Colors.Unknown;
                 }
             }
         }
-        public string Gender
+        public Genders Gender
         {
             get
             {
@@ -45,15 +45,15 @@ namespace CatsAndDogs
             }
             set
             {
-                if(String.Compare(value, Genders.Female.ToString(), ignoreCase:true) == 0 ||
-                    String.Compare(value, Genders.Male.ToString(), ignoreCase: true) == 0)
+                if(value == Genders.Female ||
+                    value == Genders.Male)
                 {
                     this.gender = value;
 
                 }
                 else
                 {
-                    this.gender = "unknown";
+                    this.gender = Genders.Unknown;
                          
                 }
             }
@@ -63,11 +63,11 @@ namespace CatsAndDogs
         {
             this.name = "unknown";
             this.owner = "unknown";
-            this.color = "unknown";
-            this.gender = "unknown";
+            this.color = Colors.Unknown;
+            this.gender = Genders.Unknown;
         }
 
-        public Animals(string name, string owner, string color, string gender)
+        public Animals(string name, string owner, Colors color, Genders gender)
         {
             this.name = name;
             this.owner = owner;

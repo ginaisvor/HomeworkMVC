@@ -20,25 +20,18 @@ namespace CatsAndDogs.Controllers
         }
 
         [HttpGet]
-        public IActionResult FilterColor(string color)
+        public IActionResult FilterColor(Colors color)
         {
             var caini = UmpleListaCaini();
-            if (color != "")
-            {
-                caini = caini.Where(x => x.Color.Equals(color)).ToList();
-                return View(caini);
-            }
+            caini = caini.Where(x => x.Color.Equals(color)).ToList();
             return View(caini);
         }
 
-        public IActionResult FilterGender(string gender)
+        public IActionResult FilterGender(Genders gender)
         {
+            
             var caini = UmpleListaCaini();
-            if (gender != "")
-            {
-                caini = caini.Where(x => x.Gender.Equals(gender)).ToList();
-                return View(caini);
-            }
+            caini = caini.Where(x => x.Gender.Equals(gender)).ToList();
             return View(caini);
         }
 
@@ -46,10 +39,10 @@ namespace CatsAndDogs.Controllers
         private List<Animals> UmpleListaCaini()
         {
             List<Animals> listaCaini = new List<Animals>();
-            listaCaini.Add(new Animals("Laika", "Popa", "white", "female"));
-            listaCaini.Add(new Animals("Rex", "Kramer", "Black", "male"));
-            listaCaini.Add(new Animals("Lady", "Farmer", "yellow", "female"));
-            listaCaini.Add(new Animals("Dog", "Dumitriu", "red", "male"));
+            listaCaini.Add(new Animals("Laika", "Popa", Colors.White, Genders.Female));
+            listaCaini.Add(new Animals("Rex", "Kramer", Colors.Black, Genders.Male));
+            listaCaini.Add(new Animals("Lady", "Farmer", Colors.Yellow, Genders.Male));
+            listaCaini.Add(new Animals("Dog", "Dumitriu", Colors.Unknown, Genders.Male));
             return listaCaini;
         }
 

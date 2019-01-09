@@ -18,7 +18,7 @@ namespace CatsAndDogs.Controllers
         public IActionResult ListaPisici()
         {
             var pisici = UmpleListaPisici();
-            return View("Lista cu toate pisicile.", pisici);
+            return View(pisici);
         }
         [HttpGet]
         public IActionResult FilterName(string name)
@@ -44,38 +44,42 @@ namespace CatsAndDogs.Controllers
         }
 
         [HttpGet]
-        public IActionResult FilterColor(string color)
+        public IActionResult FilterNameAndOwner(string name, string owner)
         {
             var pisici = UmpleListaPisici();
-            if(color != "")
+            if (name != "" && owner != "")
             {
-                pisici = pisici.Where(x => x.Color.Equals(color)).ToList();
+                pisici = pisici.Where(x => x.Name.Equals(name) && x.Owner.Equals(owner)).ToList();
                 return View(pisici);
             }
             return View(pisici);
         }
 
-        public IActionResult FilterGender(string gender)
+        [HttpGet]
+        public IActionResult FilterColor(Colors color)
         {
             var pisici = UmpleListaPisici();
-            if (gender != "")
-            {
-                pisici = pisici.Where(x => x.Gender.Equals(gender)).ToList();
-                return View(pisici);
-            }
+
+            pisici = pisici.Where(x => x.Color.Equals(color)).ToList();
+            return View(pisici);
+
+        }
+
+        public IActionResult FilterGender(Genders gender)
+        {
+            var pisici = UmpleListaPisici();
+            pisici = pisici.Where(x => x.Gender.Equals(gender)).ToList();
             return View(pisici);
         }
 
         private List<Animals> UmpleListaPisici()
         {
             List<Animals> listaPisici = new List<Animals>();
-            listaPisici.Add(new Animals("Mitza", "Popescu", "white", "female"));
-            listaPisici.Add(new Animals("Riri", "Ionescu", "Black", "male"));
-            listaPisici.Add(new Animals("Zuza", "Stoica", "yellow", "female"));
-            listaPisici.Add(new Animals("Sever", "Toader", "red","male"));
+            listaPisici.Add(new Animals("Mitza", "Popescu", Colors.White, Genders.Female));
+            listaPisici.Add(new Animals("Riri", "Ionescu", Colors.Yellow, Genders.Male));
+            listaPisici.Add(new Animals("Zuza", "Stoica", Colors.Black, Genders.Female));
+            listaPisici.Add(new Animals("Sever", "Toader", Colors.Black,Genders.Male));
             Animals pis = new Animals();
-            pis.Color = "Black";
-            pis.Gender = "male";
             listaPisici.Add(pis);
             return listaPisici;
         }
