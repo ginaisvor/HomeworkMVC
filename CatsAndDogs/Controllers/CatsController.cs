@@ -18,7 +18,7 @@ namespace CatsAndDogs.Controllers
         public IActionResult ListaPisici()
         {
             var pisici = UmpleListaPisici();
-            return View(pisici);
+            return View("Lista cu toate pisicile.", pisici);
         }
         [HttpGet]
         public IActionResult FilterName(string name)
