@@ -99,58 +99,5 @@ namespace CatsAndDogs.Controllers
             return View(myCat);
         }
 
-        //public IActionResult FilterGender(Genders gender)
-        //{
-        //    var pisici = UmpleListaPisici();
-        //    pisici = pisici.Where(x => x.Gender.Equals(gender)).ToList();
-        //    return View(pisici);
-        //}
-
-        //private List<Animals> UmpleListaPisici()
-        //{
-        //    List<Animals> listaPisici = new List<Animals>();
-        //    listaPisici.Add(new Animals()
-        //    {
-        //        NickName = "Mitza",
-        //        DateOfBirth = DateTime.Parse("01.01.2019"),
-        //        OwnerName = "Popescu",
-        //        OwnerEmail = "popescu@gmail.com",
-        //        Color = Colors.White,
-        //        Gender = Genders.Female
-        //    });
-
-        //    listaPisici.Add(new Animals()
-        //    {
-        //        NickName = "Riri",
-        //        DateOfBirth = DateTime.Parse("15.03.2014"),
-        //        OwnerName = "Ionescu",
-        //        OwnerEmail = "ionescu@yahoo.com",
-        //        Color = Colors.Yellow,
-        //        Gender = Genders.Male
-        //    });
-
-        //    listaPisici.Add(new Animals()
-        //    {
-        //        NickName = "Zuza",
-        //        DateOfBirth = DateTime.Parse("12.07.2010"),
-        //        OwnerName = "Stoica",
-        //        OwnerEmail = "stoica@gmail.com",
-        //        Color = Colors.Black,
-        //        Gender = Genders.Female
-        //    });
-
-        //    listaPisici.Add(new Animals()
-        //    {
-        //        NickName = "Sever",
-        //        DateOfBirth = DateTime.Parse("29.07.2017"),
-        //        OwnerName = "Toader",
-        //        OwnerEmail = "toader@gmail.com",
-        //        Color = Colors.Black,
-        //        Gender = Genders.Male
-        //    });
-
-        //    return listaPisici;
-        //}
-
     }
 }
