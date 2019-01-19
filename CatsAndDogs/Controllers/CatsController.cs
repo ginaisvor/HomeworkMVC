@@ -68,10 +68,12 @@ namespace CatsAndDogs.Controllers
         [HttpPost]
         public IActionResult Delete(Animals model)
         {
-            var catToDelete = catRepository.GetCats().Find(x => x.Id == model.Id);
-            catRepository.DeleteCat(catToDelete);
-            //TryUpdateModelAsync(catRepository.GetCats());
-            return RedirectToAction("List");
+            if (ModelState.Count > 0)
+            {
+                var catToDelete = catRepository.GetCats().Find(x => x.Id == model.Id);
+                catRepository.DeleteCat(catToDelete);
+            }
+            return View(model);          
         }
 
         public IActionResult Index()
