@@ -2,77 +2,28 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace CatsAndDogs
 {
-    enum Colors { Black, White, Yellow };
-    enum Genders { Male, Female };
+    public enum Colors { Black, White, Yellow};
+    public enum Genders { Male, Female};
 
     public class Animals
     {
-        private string name;
-        private string owner;
-        private string color;
-        private string gender;
+        public int Id { get; set; }
+        public string NickName { get; set;}
+        [Required]
+        [DataType(DataType.Date)]
+        public DateTime DateOfBirth { get; set; }
+        [Required]
+        [MinLength(2)]
+        public string OwnerName { get; set; }
+        [Required]
+        [EmailAddress]
+        public string OwnerEmail { get; set; }
+        public Colors Color { get; set; }
 
-        public string Name { get { return this.name; } }
-        public string Owner { get { return this.owner; }}
-        public string Color
-        {
-            get
-            {
-                return this.color;
-            }
-            set
-            {
-                if (String.Compare(value, Colors.Black.ToString(), ignoreCase: true) == 0 ||
-                    String.Compare(value, Colors.White.ToString(), ignoreCase: true) == 0 ||
-                    String.Compare(value, Colors.Yellow.ToString(), ignoreCase: true) == 0)
-                {
-                    this.color = value;
-                }
-                else
-                {
-                    this.color = "Unknown";
-                }
-            }
-        }
-        public string Gender
-        {
-            get
-            {
-                return this.gender;
-            }
-            set
-            {
-                if(String.Compare(value, Genders.Female.ToString(), ignoreCase:true) == 0 ||
-                    String.Compare(value, Genders.Male.ToString(), ignoreCase: true) == 0)
-                {
-                    this.gender = value;
-
-                }
-                else
-                {
-                    this.gender = "unknown";
-                         
-                }
-            }
-        }
-
-        public Animals()
-        {
-            this.name = "unknown";
-            this.owner = "unknown";
-            this.color = "unknown";
-            this.gender = "unknown";
-        }
-
-        public Animals(string name, string owner, string color, string gender)
-        {
-            this.name = name;
-            this.owner = owner;
-            this.color = color;
-            this.gender = gender;
-        }
+        public Genders Gender { get; set; }
     }
 }

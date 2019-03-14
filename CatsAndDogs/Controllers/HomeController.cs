@@ -17,7 +17,7 @@ namespace CatsAndDogs.Controllers
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
+            ViewData["Message"] = "Pentru iubitorii de animale";
 
             return View();
         }
